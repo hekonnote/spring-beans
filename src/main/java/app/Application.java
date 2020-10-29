@@ -10,11 +10,18 @@ public class Application {
     public static void main(String[] args) {
         ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(AppConfig.class);
+
+        AnimalsCage animalsCage = applicationContext.getBean(AnimalsCage.class);
+        System.out.println(animalsCage.getAnimal().getClass().getSimpleName());
+        System.out.println(animalsCage.getTimer().getTime());
+
         for (int i = 0; i < 5; i++) {
             AnimalsCage bean =
                     applicationContext.getBean(AnimalsCage.class);
             bean.whatAnimalSay();
         }
     }
+
+
 
 }
